@@ -1,0 +1,18 @@
+# 系统垃圾
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+
+# 依赖 / 构建产物（本项目其实不需要，留着防手滑）
+node_modules/
+dist/
+
+# 本地临时
+*.log
+_shot*.png
+.edgeprofile/
