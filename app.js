@@ -496,23 +496,36 @@
   async function flushSave() {
     const keys = [...pending];
     pending.clear();
+    let saved = 0;
+    let needNick = false;
+
     for (const k of keys) {
       try {
-        await saveSide(k);
+        const r = await saveSide(k);
+        if (r === "no-nick") needNick = true;
+        else if (r === "saved") saved++;
       } catch (e) {
         console.error(e);
         toast(explainError(e));
         return;
       }
     }
-    toast("记下啦 ✓");
+
+    // 不能在这儿一律说「记下啦」—— 没昵称的其实一个字都没存
+    if (needNick) {
+      toast("先填个昵称，不然不知道是谁呀");
+      const el = $("#nickTeach");
+      if (el && el.focus) el.focus();
+    } else if (saved) {
+      toast("记下啦 ✓");
+    }
   }
 
   async function saveSide(key) {
     const s = state[key];
     const isTeach = key === "teach";
     const nick = (isTeach ? s.nick : SELF) || "";
-    if (isTeach && !nick.trim()) return;   // 师兄师姐端先填昵称
+    if (isTeach && !nick.trim()) return "no-nick";
 
     const list = [...s.slots].map((k) => {
       const a = k.split("|");
@@ -523,13 +536,14 @@
 
     await Store.savePerson({
       token: s.token,
-      nickname: nick.trim() || (isTeach ? "匿名" : SELF),
+      nickname: nick.trim() || SELF,
       role: isTeach ? "senior" : "me",
       week: state.week,
       exp_ids: [...s.exps],
       note: s.note || ""
     });
     await Store.saveSlots(s.token, state.week, list);
+    return "saved";
   }
 
   /* ---------------- 复制 ---------------- */
@@ -561,6 +575,30 @@
       "我有空就过去在旁边看看，绝不占你们时间 🙇‍♀️\n" +
       url
     );
+  }
+
+  /* 导出成制表符分隔的纯文本 —— 粘进 Excel / 飞书 / Numbers 会自动分列 */
+  function exportTSV() {
+    const people = (state.board && state.board.people || []).filter((p) => p.role === "senior");
+    const cell = (v) => String(v == null ? "" : v).replace(/[\t\r\n]+/g, " ").trim();
+
+    const rows = [["昵称", "时间", "实验", "补充", "编号"]];
+
+    people
+      .map((p) => ({ p, slots: groupSlots(state.board.slots || [], p.token) }))
+      .sort((a, b) => (a.p.nickname || "").localeCompare(b.p.nickname || ""))
+      .forEach(({ p, slots }) => {
+        rows.push([
+          cell(p.nickname) || "（没填）",
+          slots.map(slotLabel).join("、") || "（没填）",
+          (p.exp_ids || []).map((id) => (catById(id) || {}).name || id).join("、") || "（没填）",
+          cell(p.note),
+          String(p.token || "").slice(0, 8)
+        ]);
+      });
+
+    if (rows.length === 1) return "";
+    return rows.map((r) => r.join("\t")).join("\n");
   }
 
   /* ---------------- 事件 ---------------- */
@@ -608,6 +646,11 @@
     $("#lockBtn").addEventListener("click", () => setLocked(true));
     $("#copyInvite").addEventListener("click", () =>
       copy(inviteText(), "复制好啦，去群里粘贴吧 📋"));
+    $("#copySheet").addEventListener("click", () => {
+      const tsv = exportTSV();
+      if (!tsv) return toast("这周还没人填，没什么可导的");
+      copy(tsv, "表格已复制，粘进 Excel 就是分好的列");
+    });
   }
 
   /* ---------------- 启动 ---------------- */
