@@ -295,7 +295,7 @@
       const meta = D.tiers.find((x) => x.id === tier);
       const head = document.createElement("div");
       head.className = "chips-tier";
-      head.textContent = "第" + (TIER_CN[tier] || tier) + "梯队 · " + (meta ? meta.name : "其他");
+      head.textContent = (meta ? meta.name : "其他");
       el.appendChild(head);
 
       list.filter((c) => (Number(c.tier) || 1) === tier).forEach((c) => {
