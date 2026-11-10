@@ -24,43 +24,43 @@ window.PEEK_DATA = {
   categories: [
     {
       id: "culture", name: "细胞培养", emoji: "🧫", tier: 1, level: 1, hours: "0.5–1 h",
-      why: "所有细胞的起点，跟一次就能自己开瓶",
-      watch: ["无菌操作手势", "消化到什么程度该终止", "传代密度怎么估"],
+      why: "所有细胞的起点",
+      watch: ["无菌操作", "消化到什么程度该终止", "传代密度"],
       maps: ["A1", "B1", "F1"]
     },
     {
       id: "treat", name: "细胞处理与表型", emoji: "🧪", tier: 1, level: 1, hours: "1–2 h",
-      why: "缺糖、缺氧、加药、CCK-8，最容易插进别人已有的实验里",
-      watch: ["铺板密度与时间点", "缺糖/缺氧怎么设对照", "CCK-8 加药到读板的节奏"],
+      why: "缺糖、缺氧、加药、CCK-8",
+      watch: ["铺板密度与时间点", "缺糖/缺氧怎么设对照", "CCK-8 加药，读板"],
       maps: ["A2", "A3", "B1", "E4"]
     },
     {
       id: "func", name: "细胞功能实验", emoji: "🏃", tier: 1, level: 1, hours: "1–3 h（含等待）",
-      why: "Transwell、划痕、克隆形成、管形成，手法简单但要等",
+      why: "Transwell、划痕、克隆形成、管形成，手法",
       watch: ["小室怎么放不产生气泡", "划痕的力度一致性", "固定染色的时间点"],
       maps: ["E5", "E7"]
     },
     {
       id: "wb", name: "Western blot", emoji: "🧬", tier: 2, level: 2, hours: "2 天（分两段）",
-      why: "实验室最高频技能，会了就能接活；也是最值得跟的一个",
+      why: "高频",
       watch: ["裂解与 BCA 定量", "制胶和上样量", "转膜有没有转透", "条带怎么判读"],
       maps: ["B3", "C7", "E12", "F4", "F5"]
     },
     {
       id: "if", name: "免疫荧光与成像", emoji: "🔬", tier: 2, level: 2, hours: "1 天（分两段）",
-      why: "和你的课题最贴，直接决定 IL-17F 到底在不在核里",
+      why: "大创相关",
       watch: ["爬片/种板", "固定透化的分寸", "抗体浓度与背景", "共聚焦怎么调参数"],
       maps: ["B4", "B6", "C6"]
     },
     {
       id: "qpcr", name: "核酸提取与 qPCR", emoji: "🌡️", tier: 2, level: 2, hours: "半天",
-      why: "提 RNA、逆转录、上机，全流程都是手上的活",
+      why: "提 RNA、逆转录、上机",
       watch: ["RNase 防护", "逆转录体系", "加样重复性", "熔解曲线怎么看"],
       maps: ["A5", "D9", "E12", "F6"]
     },
     {
       id: "clone", name: "分子克隆", emoji: "🔧", tier: 2, level: 2, hours: "2–3 天（分段）",
-      why: "后面要做 NLS 突变体，迟早得自己会",
+      why: "大创：NLS 突变体",
       watch: ["引物设计", "酶切/同源重组", "转化与涂板", "挑单克隆送测序"],
       maps: ["C2", "C3", "F2"]
     },
@@ -72,13 +72,13 @@ window.PEEK_DATA = {
     },
     {
       id: "ihc", name: "组织切片与免疫组化", emoji: "🩸", tier: 3, level: 3, hours: "2–3 天",
-      why: "周期长、步骤多，建议先旁观并记流程",
+      why: "周期长、步骤多",
       watch: ["固定包埋", "抗原修复", "显色与封片", "结果判读标准"],
       maps: ["B6", "E11", "F7"]
     },
     {
       id: "virus", name: "慢病毒与稳转构建", emoji: "🦠", tier: 3, level: 3, hours: "1–2 周",
-      why: "周期长、规范多，先听懂原理，操作从观摩开始",
+      why: "周期长、规范多",
       watch: ["包装体系与转染", "滴度怎么定", "感染与筛选", "单克隆化"],
       maps: ["C4", "E1", "E3", "F3"]
     },
@@ -96,7 +96,7 @@ window.PEEK_DATA = {
     },
     {
       id: "bioinfo", name: "生信分析与作图", emoji: "💻", tier: 3, level: 2, hours: "半天",
-      why: "不用进实验室也能学，适合在别人做实验时并行推进",
+      why: " ",
       watch: ["DESeq2 差异分析", "MACS2 / HOMER", "R 或 Python 作图"],
       maps: ["D8", "F8", "B7"]
     }
