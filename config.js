@@ -20,7 +20,7 @@
 
 window.PEEK_CONFIG = {
 
-  SUPABASE_URL: "crmxuxapeqifqvrkyash.supabase.co/rest/v1/",          
+  SUPABASE_URL: "https://crmxuxapeqifqvrkyash.supabase.co/rest/v1/",          
 
   SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNybXh1eGFwZXFpZnF2cmt5YXNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQyODg0ODcsImV4cCI6MjEwOTg2NDQ4N30.VnsYPZBQ5R41OBQ-CTDzbyVQblf2z30zeu_9jgBf4yY",     // 例：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIs...
 
