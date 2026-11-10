@@ -471,7 +471,7 @@
   function explainError(e) {
     const msg = String((e && e.message) || "");
     if (/^401|^403|JWT|apikey/i.test(msg)) return "密钥不对，检查 config.js 里的 anon key";
-    if (/^404|does not exist|relation/i.test(msg)) return "找不到表或函数，先在 Supabase 跑一次 schema.sql";
+    if (/^404|does not exist|relation/i.test(msg)) return "找不到表或函数，检查 Supabase  schema.sql";
     if (/^5\d\d/.test(msg)) return "Supabase 项目可能在休眠，等一会儿再试";
     return "连不上数据库，稍后再试";
   }
@@ -513,11 +513,11 @@
 
     // 不能在这儿一律说「记下啦」—— 没昵称的其实一个字都没存
     if (needNick) {
-      toast("先填个昵称，不然不知道是谁呀");
+      toast("师兄师姐请先填个昵称，不然我不知道是谁呀");
       const el = $("#nickTeach");
       if (el && el.focus) el.focus();
     } else if (saved) {
-      toast("记下啦 ✓");
+      toast("谢谢愿意教我，记下啦 ✓ ");
     }
   }
 
