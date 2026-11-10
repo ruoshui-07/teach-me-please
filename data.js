@@ -16,9 +16,9 @@ window.PEEK_DATA = {
   },
 
   tiers: [
-    { id: 1, name: "零门槛，先去跟", hint: "看一遍就能自己上手" },
-    { id: 2, name: "跟上手", hint: "跟 2–3 次，能写进简历" },
-    { id: 3, name: "先听懂再说", hint: "周期长或门槛高，先观摩" }
+    { id: 1, name: "1", hint: " " },
+    { id: 2, name: "2", hint: "  " },
+    { id: 3, name: "3", hint: " " }
   ],
 
   categories: [
